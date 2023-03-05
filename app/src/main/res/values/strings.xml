@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Inkpad</string>
+
+    <string name="fab_description_add_note">fab_add</string>
+    <string name="fab_add_note_text">Create</string>
+    <string name="fab_description_settings">fab_settings</string>
+    <string name="fab_settings_text">Settings</string>
+
+    <string name="toolbar_title">Notes</string>
 </resources>
