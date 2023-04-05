@@ -2,7 +2,6 @@ package com.ua.inkpad.view.screens
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.ua.inkpad.R
 import com.ua.inkpad.databinding.FragmentListBinding
@@ -110,7 +108,6 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                     R.id.menu_settings -> findNavController().navigate(R.id.action_listFragment_to_settingsFragment)
                     R.id.menu_priority_high -> loadNotesByHighPriority()
                     R.id.menu_priority_low -> loadNotesByLowPriority()
-                    R.id.menu_delete_all -> confirmDeleteAll()
                 }
                 return true
             }
@@ -145,25 +142,6 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         noteViewModel.notesSortedByLowPriority.observe(viewLifecycleOwner) {
             noteAdapter.notes = it
         }
-    }
-
-    private fun confirmDeleteAll() {
-        val builder = MaterialAlertDialogBuilder(requireContext())
-        builder.setTitle("Remove all?")
-        builder.setMessage("Are you sure that you want to remove all?")
-        builder.setIcon(R.drawable.ic_bin)
-        builder.setPositiveButton("Yes") { _, _ -> deleteAll() }
-        builder.setNegativeButton("No") { _, _ -> }
-        builder.create().show()
-    }
-
-    private fun deleteAll() {
-        noteViewModel.deleteAll()
-        Toast.makeText(
-            requireContext(),
-            "Notes have been successfully removed!",
-            Toast.LENGTH_SHORT
-        ).show()
     }
 
     override fun onDestroyView() {
