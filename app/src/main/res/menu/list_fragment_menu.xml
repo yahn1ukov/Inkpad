@@ -9,12 +9,6 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|ifRoom" />
 
-    <item
-        android:id="@+id/menu_settings"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/menu_settings"
-        app:showAsAction="ifRoom" />
-
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_sort_by"
@@ -31,4 +25,10 @@
             </menu>
         </item>
     </group>
+
+    <item
+        android:id="@+id/menu_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/menu_settings"
+        app:showAsAction="ifRoom" />
 </menu>
