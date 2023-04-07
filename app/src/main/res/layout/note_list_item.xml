@@ -6,14 +6,14 @@
 
         <variable
             name="note"
-            type="com.ua.inkpad.model.entities.Note" />
+            type="com.ua.inkpad.data.local.entities.NoteEntity" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:navigateToUpdateFragment="@{note}"
+        android:navigateToNoteUpdateFragment="@{note}"
         app:cardCornerRadius="10dp"
         app:strokeColor="?attr/colorSecondary"
         app:strokeWidth="2dp">
@@ -28,7 +28,7 @@
                 android:layout_height="16dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:parsePriorityToColor="@{note.priority}"
+                android:parsePriorityToColor="@{note.notePriority}"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

@@ -3,29 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/listFragment">
+    app:startDestination="@id/noteListFragment">
 
     <fragment
-        android:id="@+id/listFragment"
-        android:name="com.ua.inkpad.view.screens.ListFragment"
+        android:id="@+id/noteListFragment"
+        android:name="com.ua.inkpad.presentation.notes.screens.NoteListFragment"
         android:label="Inkpad"
-        tools:layout="@layout/fragment_list">
+        tools:layout="@layout/fragment_note_list">
         <action
-            android:id="@+id/action_listFragment_to_addFragment"
-            app:destination="@id/addFragment"
+            android:id="@+id/action_noteListFragment_to_noteAddFragment"
+            app:destination="@id/noteAddFragment"
             app:enterAnim="@anim/from_up"
             app:exitAnim="@anim/to_down"
             app:popEnterAnim="@anim/from_down"
             app:popExitAnim="@anim/to_up" />
         <action
-            android:id="@+id/action_listFragment_to_updateFragment"
-            app:destination="@id/updateFragment"
+            android:id="@+id/action_noteListFragment_to_noteUpdateFragment"
+            app:destination="@id/noteUpdateFragment"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left" />
         <action
-            android:id="@+id/action_listFragment_to_settingsFragment"
+            android:id="@+id/action_noteListFragment_to_settingsFragment"
             app:destination="@id/settingsFragment"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
@@ -33,42 +33,42 @@
             app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
-        android:id="@+id/addFragment"
-        android:name="com.ua.inkpad.view.screens.AddFragment"
+        android:id="@+id/noteAddFragment"
+        android:name="com.ua.inkpad.presentation.notes.screens.NoteAddFragment"
         android:label="Add"
-        tools:layout="@layout/fragment_add">
+        tools:layout="@layout/fragment_note_add">
         <action
-            android:id="@+id/action_addFragment_to_listFragment"
-            app:destination="@id/listFragment"
+            android:id="@+id/action_noteAddFragment_to_noteListFragment"
+            app:destination="@id/noteListFragment"
             app:enterAnim="@anim/from_down"
             app:exitAnim="@anim/to_up"
-            app:popUpTo="@id/listFragment"
+            app:popUpTo="@id/noteListFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/updateFragment"
-        android:name="com.ua.inkpad.view.screens.UpdateFragment"
+        android:id="@+id/noteUpdateFragment"
+        android:name="com.ua.inkpad.presentation.notes.screens.NoteUpdateFragment"
         android:label="Update"
-        tools:layout="@layout/fragment_update">
+        tools:layout="@layout/fragment_note_update">
         <action
-            android:id="@+id/action_updateFragment_to_listFragment"
-            app:destination="@id/listFragment"
+            android:id="@+id/action_noteUpdateFragment_to_noteListFragment"
+            app:destination="@id/noteListFragment"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
-            app:popUpTo="@id/listFragment"
+            app:popUpTo="@id/noteListFragment"
             app:popUpToInclusive="true" />
         <argument
             android:name="selectedNote"
-            app:argType="com.ua.inkpad.model.entities.Note" />
+            app:argType="com.ua.inkpad.data.local.entities.NoteEntity" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.ua.inkpad.view.screens.SettingsFragment"
+        android:name="com.ua.inkpad.presentation.settings.screens.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings">
         <action
-            android:id="@+id/action_settingsFragment_to_listFragment"
-            app:destination="@id/listFragment"
+            android:id="@+id/action_settingsFragment_to_noteListFragment"
+            app:destination="@id/noteListFragment"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right" />
     </fragment>
