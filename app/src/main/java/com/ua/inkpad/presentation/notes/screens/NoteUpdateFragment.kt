@@ -1,5 +1,6 @@
 package com.ua.inkpad.presentation.notes.screens
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -39,7 +40,6 @@ class NoteUpdateFragment : Fragment() {
         _binding = FragmentNoteUpdateBinding.inflate(inflater, container, false)
 
         binding.args = args
-
         binding.updateSubmitBtn.setOnClickListener { update() }
 
         return binding.root
@@ -55,6 +55,7 @@ class NoteUpdateFragment : Fragment() {
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
+                    R.id.menu_share -> shareNote()
                     R.id.menu_delete -> confirmDelete()
                     android.R.id.home -> requireActivity().onBackPressed()
                 }
@@ -92,13 +93,26 @@ class NoteUpdateFragment : Fragment() {
         }
     }
 
+    private fun shareNote() {
+        val intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(
+                Intent.EXTRA_TEXT,
+                "Title: ${args.selectedNote.title}\nPriority: ${args.selectedNote.notePriority.name}\nDescription: ${args.selectedNote.description}"
+            )
+            type = "text/plain"
+        }
+        requireActivity().startActivity(Intent.createChooser(intent, null))
+    }
+
     private fun confirmDelete() {
-        val builder = MaterialAlertDialogBuilder(requireContext())
-        builder.setTitle("Remove '${args.selectedNote.title}'?")
-        builder.setMessage("Are you sure that you want to remove '${args.selectedNote.title}'?")
-        builder.setIcon(R.drawable.ic_bin)
-        builder.setPositiveButton("Yes") { _, _ -> delete() }
-        builder.setNegativeButton("No") { _, _ -> }
+        val builder = MaterialAlertDialogBuilder(requireContext()).apply {
+            setTitle("Remove '${args.selectedNote.title}'?")
+            setMessage("Are you sure that you want to remove '${args.selectedNote.title}'?")
+            setIcon(R.drawable.ic_bin)
+            setPositiveButton("Yes") { _, _ -> delete() }
+            setNegativeButton("No") { _, _ -> }
+        }
         builder.create().show()
     }
 

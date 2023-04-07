@@ -35,7 +35,6 @@ class NoteAddFragment : Fragment() {
         _binding = FragmentNoteAddBinding.inflate(inflater, container, false)
 
         binding.addPrioritiesSpinner.setText("High", false)
-
         binding.addSubmitBtn.setOnClickListener { insert() }
 
         return binding.root

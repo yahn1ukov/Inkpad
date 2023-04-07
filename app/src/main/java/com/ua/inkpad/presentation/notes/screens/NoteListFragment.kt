@@ -60,10 +60,11 @@ class NoteListFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun setupRecyclerView() {
-        binding.recyclerView.adapter = noteAdapter
-        binding.recyclerView.layoutManager =
-            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        binding.recyclerView.itemAnimator = DefaultItemAnimator()
+        binding.recyclerView.apply {
+            adapter = noteAdapter
+            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            itemAnimator = DefaultItemAnimator()
+        }
 
         swipeToDeleteNote(binding.recyclerView)
     }
@@ -84,9 +85,7 @@ class NoteListFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun restoreDeletedNote(view: View, deletedNote: NoteEntity) {
         val snackBar =
             Snackbar.make(view, "Removed '${deletedNote.title}'", Snackbar.LENGTH_LONG)
-        snackBar.setAction("Undo") {
-            noteViewModel.insert(deletedNote)
-        }
+        snackBar.setAction("Undo") { noteViewModel.insert(deletedNote) }
         snackBar.show()
     }
 

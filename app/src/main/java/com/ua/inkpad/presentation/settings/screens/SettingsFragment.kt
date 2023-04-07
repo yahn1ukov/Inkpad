@@ -56,12 +56,13 @@ class SettingsFragment : Fragment() {
     }
 
     private fun confirmDeleteAll() {
-        val builder = MaterialAlertDialogBuilder(requireContext())
-        builder.setTitle("Remove all?")
-        builder.setMessage("Are you sure that you want to remove all?")
-        builder.setIcon(R.drawable.ic_bin)
-        builder.setPositiveButton("Yes") { _, _ -> deleteAll() }
-        builder.setNegativeButton("No") { _, _ -> }
+        val builder = MaterialAlertDialogBuilder(requireContext()).apply {
+            setTitle("Remove all?")
+            setMessage("Are you sure that you want to remove all?")
+            setIcon(R.drawable.ic_bin)
+            setPositiveButton("Yes") { _, _ -> deleteAll() }
+            setNegativeButton("No") { _, _ -> }
+        }
         builder.create().show()
     }
 
