@@ -25,7 +25,7 @@ Clean Architecture with MVVM Pattern
   - Get all
   - Create
   - Update
-  - Delete (either menu button or swipe to the left)
+  - Delete (both menu button and swipe to the left)
   - Delete all
   - Sort by high priority
   - Sort by low priority
