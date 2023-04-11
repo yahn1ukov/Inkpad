@@ -11,7 +11,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ua.inkpad.Inkpad
 import com.ua.inkpad.R
 import com.ua.inkpad.databinding.FragmentSettingsBinding
-import com.ua.inkpad.presentation.notes.viewModels.NoteViewModel
+import com.ua.inkpad.presentation.notes.viewmodels.NoteViewModel
 import javax.inject.Inject
 
 class SettingsFragment : Fragment() {

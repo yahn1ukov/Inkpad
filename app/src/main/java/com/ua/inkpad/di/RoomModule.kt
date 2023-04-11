@@ -22,11 +22,13 @@ class RoomModule {
     }
 
     @Provides
+    @Singleton
     fun provideNoteDao(applicationDatabase: ApplicationDatabase): NoteDao {
         return applicationDatabase.noteDao()
     }
 
     @Provides
+    @Singleton
     fun provideNoteLocalDataSource(noteDao: NoteDao): NoteLocalDataSource {
         return NoteLocalDataSource(noteDao)
     }

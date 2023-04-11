@@ -2,7 +2,7 @@ package com.ua.inkpad.data.local.repositories
 
 import androidx.lifecycle.LiveData
 import com.ua.inkpad.data.local.dao.NoteDao
-import com.ua.inkpad.data.local.entities.NoteEntity
+import com.ua.inkpad.data.local.models.entities.NoteEntity
 import javax.inject.Inject
 
 class NoteLocalDataSource @Inject constructor(private val noteDao: NoteDao) {

@@ -13,9 +13,9 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ua.inkpad.Inkpad
 import com.ua.inkpad.R
-import com.ua.inkpad.data.local.entities.NoteEntity
+import com.ua.inkpad.data.local.models.entities.NoteEntity
 import com.ua.inkpad.databinding.FragmentNoteUpdateBinding
-import com.ua.inkpad.presentation.notes.viewModels.NoteViewModel
+import com.ua.inkpad.presentation.notes.viewmodels.NoteViewModel
 import com.ua.inkpad.utils.DataUtil
 import javax.inject.Inject
 

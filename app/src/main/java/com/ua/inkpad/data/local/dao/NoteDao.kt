@@ -2,7 +2,7 @@ package com.ua.inkpad.data.local.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.ua.inkpad.data.local.entities.NoteEntity
+import com.ua.inkpad.data.local.models.entities.NoteEntity
 
 @Dao
 interface NoteDao {

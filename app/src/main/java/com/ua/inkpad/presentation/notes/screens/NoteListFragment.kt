@@ -15,14 +15,14 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.ua.inkpad.Inkpad
 import com.ua.inkpad.R
-import com.ua.inkpad.data.local.entities.NoteEntity
+import com.ua.inkpad.data.local.models.entities.NoteEntity
 import com.ua.inkpad.databinding.FragmentNoteListBinding
 import com.ua.inkpad.presentation.notes.adapters.NoteAdapter
 import com.ua.inkpad.presentation.notes.handlers.SwipeToDeleteNoteHandler
-import com.ua.inkpad.presentation.notes.viewModels.NoteViewModel
+import com.ua.inkpad.presentation.notes.viewmodels.NoteViewModel
 import com.ua.inkpad.utils.DataUtil
-import com.ua.inkpad.utils.extensions.observeOnce
-import com.ua.inkpad.utils.helpers.hideKeyboard
+import com.ua.inkpad.utils.observeOnce
+import com.ua.inkpad.utils.hideKeyboard
 import javax.inject.Inject
 
 class NoteListFragment : Fragment(), SearchView.OnQueryTextListener {

@@ -1,7 +1,7 @@
-package com.ua.inkpad.presentation.notes.diffs
+package com.ua.inkpad.presentation.notes.diff
 
 import androidx.recyclerview.widget.DiffUtil
-import com.ua.inkpad.data.local.entities.NoteEntity
+import com.ua.inkpad.data.local.models.entities.NoteEntity
 
 class NoteDiff(
     private val oldList: List<NoteEntity>,

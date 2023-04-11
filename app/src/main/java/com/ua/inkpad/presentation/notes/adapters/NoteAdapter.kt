@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.ua.inkpad.data.local.entities.NoteEntity
+import com.ua.inkpad.data.local.models.entities.NoteEntity
 import com.ua.inkpad.databinding.NoteListItemBinding
-import com.ua.inkpad.presentation.notes.diffs.NoteDiff
+import com.ua.inkpad.presentation.notes.diff.NoteDiff
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     var notes = emptyList<NoteEntity>()

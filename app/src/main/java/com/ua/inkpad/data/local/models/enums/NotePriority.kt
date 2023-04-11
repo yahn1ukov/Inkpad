@@ -1,4 +1,4 @@
-package com.ua.inkpad.data.local.enums
+package com.ua.inkpad.data.local.models.enums
 
 enum class NotePriority {
     HIGH,

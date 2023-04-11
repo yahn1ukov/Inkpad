@@ -1,10 +1,10 @@
-package com.ua.inkpad.data.local.entities
+package com.ua.inkpad.data.local.models.entities
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.ua.inkpad.data.local.enums.NotePriority
+import com.ua.inkpad.data.local.models.enums.NotePriority
 import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "notes")

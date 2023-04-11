@@ -59,7 +59,7 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="selectedNote"
-            app:argType="com.ua.inkpad.data.local.entities.NoteEntity" />
+            app:argType="com.ua.inkpad.data.local.models.entities.NoteEntity" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

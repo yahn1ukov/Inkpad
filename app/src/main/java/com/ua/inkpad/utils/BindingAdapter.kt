@@ -1,4 +1,4 @@
-package com.ua.inkpad.utils.binding
+package com.ua.inkpad.utils
 
 import android.view.View
 import android.widget.AutoCompleteTextView
@@ -9,8 +9,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.ua.inkpad.R
-import com.ua.inkpad.data.local.entities.NoteEntity
-import com.ua.inkpad.data.local.enums.NotePriority
+import com.ua.inkpad.data.local.models.entities.NoteEntity
+import com.ua.inkpad.data.local.models.enums.NotePriority
 import com.ua.inkpad.presentation.notes.screens.NoteListFragmentDirections
 
 class BindingAdapter {

@@ -1,7 +1,7 @@
 package com.ua.inkpad.data.repositories
 
 import androidx.lifecycle.LiveData
-import com.ua.inkpad.data.local.entities.NoteEntity
+import com.ua.inkpad.data.local.models.entities.NoteEntity
 import com.ua.inkpad.data.local.repositories.NoteLocalDataSource
 import javax.inject.Inject
 

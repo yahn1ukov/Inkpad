@@ -1,9 +1,9 @@
-package com.ua.inkpad.presentation.notes.viewModels
+package com.ua.inkpad.presentation.notes.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ua.inkpad.data.local.entities.NoteEntity
+import com.ua.inkpad.data.local.models.entities.NoteEntity
 import com.ua.inkpad.domain.usecases.notes.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

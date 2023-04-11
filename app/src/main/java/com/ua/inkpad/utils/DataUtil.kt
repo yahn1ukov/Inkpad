@@ -1,8 +1,8 @@
 package com.ua.inkpad.utils
 
 import androidx.lifecycle.MutableLiveData
-import com.ua.inkpad.data.local.entities.NoteEntity
-import com.ua.inkpad.data.local.enums.NotePriority
+import com.ua.inkpad.data.local.models.entities.NoteEntity
+import com.ua.inkpad.data.local.models.enums.NotePriority
 
 class DataUtil {
     companion object {
