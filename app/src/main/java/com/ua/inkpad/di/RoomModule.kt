@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.ua.inkpad.data.local.dao.NoteDao
 import com.ua.inkpad.data.local.database.ApplicationDatabase
 import com.ua.inkpad.data.local.repositories.NoteLocalDataSource
+import com.ua.inkpad.utils.Constants.Companion.DB_NAME
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -17,7 +18,7 @@ class RoomModule {
         return Room.databaseBuilder(
             context,
             ApplicationDatabase::class.java,
-            "Inkpad.db"
+            DB_NAME
         ).build()
     }
 

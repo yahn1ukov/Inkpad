@@ -6,6 +6,6 @@ import javax.inject.Inject
 
 class InsertUserCase @Inject constructor(private val noteRepository: NoteRepository) {
     suspend fun execute(note: NoteEntity) {
-        noteRepository.insert(note)
+        noteRepository.local.insert(note)
     }
 }

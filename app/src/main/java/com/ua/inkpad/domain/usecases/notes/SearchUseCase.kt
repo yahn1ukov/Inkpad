@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class SearchUseCase @Inject constructor(private val noteRepository: NoteRepository) {
     fun execute(title: String): LiveData<List<NoteEntity>> {
-        return noteRepository.search(title)
+        return noteRepository.local.search(title)
     }
 }

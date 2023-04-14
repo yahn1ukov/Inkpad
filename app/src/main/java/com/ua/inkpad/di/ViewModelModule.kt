@@ -3,12 +3,20 @@ package com.ua.inkpad.di
 import com.ua.inkpad.data.repositories.NoteRepository
 import com.ua.inkpad.domain.usecases.notes.*
 import com.ua.inkpad.presentation.notes.viewmodels.NoteViewModel
+import com.ua.inkpad.presentation.settings.viewmodels.SettingsViewModel
+import com.ua.inkpad.utils.PreferenceManager
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
 class ViewModelModule {
+    @Provides
+    @Singleton
+    fun provideSettingsViewModel(preferenceManager: PreferenceManager): SettingsViewModel {
+        return SettingsViewModel(preferenceManager)
+    }
+
     @Provides
     @Singleton
     fun provideNoteViewModel(

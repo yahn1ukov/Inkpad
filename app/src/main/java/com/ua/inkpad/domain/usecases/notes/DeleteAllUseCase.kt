@@ -5,6 +5,6 @@ import javax.inject.Inject
 
 class DeleteAllUseCase @Inject constructor(private val noteRepository: NoteRepository) {
     suspend fun execute() {
-        noteRepository.deleteAll()
+        noteRepository.local.deleteAll()
     }
 }

@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class SortByHighPriorityUseCase @Inject constructor(private val noteRepository: NoteRepository) {
     fun execute(): LiveData<List<NoteEntity>> {
-        return noteRepository.sortByHighPriority()
+        return noteRepository.local.sortByHighPriority()
     }
 }

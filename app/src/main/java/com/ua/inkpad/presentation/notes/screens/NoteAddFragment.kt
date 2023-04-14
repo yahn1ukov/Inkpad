@@ -2,6 +2,7 @@ package com.ua.inkpad.presentation.notes.screens
 
 import android.os.Bundle
 import android.view.*
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -13,7 +14,9 @@ import com.ua.inkpad.R
 import com.ua.inkpad.data.local.models.entities.NoteEntity
 import com.ua.inkpad.databinding.FragmentNoteAddBinding
 import com.ua.inkpad.presentation.notes.viewmodels.NoteViewModel
-import com.ua.inkpad.utils.DataUtil
+import com.ua.inkpad.utils.Constants.Companion.HIGH_PRIORITY
+import com.ua.inkpad.utils.Constants.Companion.PRIORITIES
+import com.ua.inkpad.utils.UserDataHelper
 import javax.inject.Inject
 
 class NoteAddFragment : Fragment() {
@@ -34,7 +37,8 @@ class NoteAddFragment : Fragment() {
     ): View {
         _binding = FragmentNoteAddBinding.inflate(inflater, container, false)
 
-        binding.addPrioritiesSpinner.setText("High", false)
+        setupPrioritySpinner()
+
         binding.addSubmitBtn.setOnClickListener { insert() }
 
         return binding.root
@@ -57,18 +61,31 @@ class NoteAddFragment : Fragment() {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
+    private fun setupPrioritySpinner() {
+        val adapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_dropdown_item,
+            PRIORITIES
+        )
+
+        binding.addPrioritiesSpinner.apply {
+            setAdapter(adapter)
+            setText(HIGH_PRIORITY, false)
+        }
+    }
+
     private fun insert() {
         val title = binding.addTitleEditText.text.toString()
         val priority = binding.addPrioritiesSpinner.text.toString()
         val description = binding.addDescriptionEditText.text.toString()
 
-        val validation = DataUtil.verifyDataFromUser(title, description)
+        val validation = UserDataHelper.verifyDataFromUser(title, description)
 
-        val parsedPriority = DataUtil.parsePriorityToPriority(priority)
+        val parsedPriority = UserDataHelper.parsePriorityToPriority(priority)
 
         if (validation) {
-            val noteEntity = NoteEntity(0, title, parsedPriority, description)
-            noteViewModel.insert(noteEntity)
+            val note = NoteEntity(0, title, parsedPriority, description)
+            noteViewModel.insert(note)
             Toast.makeText(
                 requireContext(),
                 "Note has been successfully created!",

@@ -6,36 +6,14 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.findNavController
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.ua.inkpad.R
-import com.ua.inkpad.data.local.models.entities.NoteEntity
 import com.ua.inkpad.data.local.models.enums.NotePriority
-import com.ua.inkpad.presentation.notes.screens.NoteListFragmentDirections
+import com.ua.inkpad.utils.Constants.Companion.HIGH_PRIORITY
+import com.ua.inkpad.utils.Constants.Companion.LOW_PRIORITY
+import com.ua.inkpad.utils.Constants.Companion.MEDIUM_PRIORITY
 
 class BindingAdapter {
     companion object {
-        @BindingAdapter("android:navigateToNoteAddFragment")
-        @JvmStatic
-        fun navigateToNoteAddFragment(view: FloatingActionButton, navigate: Boolean) {
-            view.setOnClickListener {
-                if (navigate) {
-                    view.findNavController()
-                        .navigate(R.id.action_noteListFragment_to_noteAddFragment)
-                }
-            }
-        }
-
-        @BindingAdapter("android:navigateToNoteUpdateFragment")
-        @JvmStatic
-        fun navigateToNoteUpdateFragment(view: CardView, noteEntity: NoteEntity) {
-            view.setOnClickListener {
-                val action =
-                    NoteListFragmentDirections.actionNoteListFragmentToNoteUpdateFragment(noteEntity)
-                view.findNavController().navigate(action)
-            }
-        }
-
         @BindingAdapter("android:isEmptyDatabase")
         @JvmStatic
         fun isEmptyDatabase(view: View, isEmptyDatabase: MutableLiveData<Boolean>) {
@@ -50,9 +28,9 @@ class BindingAdapter {
         @JvmStatic
         fun parsePriorityToString(view: AutoCompleteTextView, notePriority: NotePriority) {
             when (notePriority) {
-                NotePriority.HIGH -> view.setText("High", false)
-                NotePriority.MEDIUM -> view.setText("Medium", false)
-                NotePriority.LOW -> view.setText("Low", false)
+                NotePriority.HIGH -> view.setText(HIGH_PRIORITY, false)
+                NotePriority.MEDIUM -> view.setText(MEDIUM_PRIORITY, false)
+                NotePriority.LOW -> view.setText(LOW_PRIORITY, false)
             }
         }
 

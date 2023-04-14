@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:navigateToNoteUpdateFragment="@{note}"
         app:cardCornerRadius="10dp"
         app:strokeColor="?attr/colorSecondary"
         app:strokeWidth="2dp">

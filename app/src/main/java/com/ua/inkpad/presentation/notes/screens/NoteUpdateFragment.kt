@@ -3,6 +3,7 @@ package com.ua.inkpad.presentation.notes.screens
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -16,7 +17,9 @@ import com.ua.inkpad.R
 import com.ua.inkpad.data.local.models.entities.NoteEntity
 import com.ua.inkpad.databinding.FragmentNoteUpdateBinding
 import com.ua.inkpad.presentation.notes.viewmodels.NoteViewModel
-import com.ua.inkpad.utils.DataUtil
+import com.ua.inkpad.utils.Constants.Companion.HIGH_PRIORITY
+import com.ua.inkpad.utils.Constants.Companion.PRIORITIES
+import com.ua.inkpad.utils.UserDataHelper
 import javax.inject.Inject
 
 class NoteUpdateFragment : Fragment() {
@@ -40,6 +43,9 @@ class NoteUpdateFragment : Fragment() {
         _binding = FragmentNoteUpdateBinding.inflate(inflater, container, false)
 
         binding.args = args
+
+        setupPrioritySpinner()
+
         binding.updateSubmitBtn.setOnClickListener { update() }
 
         return binding.root
@@ -65,14 +71,27 @@ class NoteUpdateFragment : Fragment() {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
+    private fun setupPrioritySpinner() {
+        val adapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_dropdown_item,
+            PRIORITIES
+        )
+
+        binding.updatePrioritiesSpinner.apply {
+            setText(HIGH_PRIORITY, false)
+            setAdapter(adapter)
+        }
+    }
+
     private fun update() {
         val title = binding.updateTitleEditText.text.toString()
         val priority = binding.updatePrioritiesSpinner.text.toString()
         val description = binding.updateDescriptionEditText.text.toString()
 
-        val validation = DataUtil.verifyDataFromUser(title, description)
+        val validation = UserDataHelper.verifyDataFromUser(title, description)
 
-        val parsedPriority = DataUtil.parsePriorityToPriority(priority)
+        val parsedPriority = UserDataHelper.parsePriorityToPriority(priority)
 
         if (validation) {
             val noteEntity = NoteEntity(

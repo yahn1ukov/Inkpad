@@ -10,14 +10,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class NoteViewModel @Inject constructor(
-    private val getAllUseCase: GetAllUseCase,
+    getAllUseCase: GetAllUseCase,
     private val insertUserCase: InsertUserCase,
     private val updateUseCase: UpdateUseCase,
     private val deleteUseCase: DeleteUseCase,
     private val deleteAllUseCase: DeleteAllUseCase,
     private val searchNoteUseCase: SearchUseCase,
-    private val sortByHighPriorityUseCase: SortByHighPriorityUseCase,
-    private val sortByLowPriorityUseCase: SortByLowPriorityUseCase
+    sortByHighPriorityUseCase: SortByHighPriorityUseCase,
+    sortByLowPriorityUseCase: SortByLowPriorityUseCase
 ) : ViewModel() {
     val notes: LiveData<List<NoteEntity>> = getAllUseCase.execute()
     val notesSortedByHighPriority: LiveData<List<NoteEntity>> =

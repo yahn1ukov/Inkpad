@@ -3,13 +3,15 @@ package com.ua.inkpad.utils
 import androidx.lifecycle.MutableLiveData
 import com.ua.inkpad.data.local.models.entities.NoteEntity
 import com.ua.inkpad.data.local.models.enums.NotePriority
+import com.ua.inkpad.utils.Constants.Companion.HIGH_PRIORITY
+import com.ua.inkpad.utils.Constants.Companion.MEDIUM_PRIORITY
 
-class DataUtil {
+class UserDataHelper {
     companion object {
         val isEmptyDatabase = MutableLiveData(false)
 
-        fun checkIsEmptyDatabase(noteEntities: List<NoteEntity>) {
-            isEmptyDatabase.value = noteEntities.isEmpty()
+        fun checkIsEmptyDatabase(notes: List<NoteEntity>) {
+            isEmptyDatabase.value = notes.isEmpty()
         }
 
         fun verifyDataFromUser(title: String, description: String): Boolean {
@@ -18,9 +20,8 @@ class DataUtil {
 
         fun parsePriorityToPriority(priority: String): NotePriority {
             return when (priority) {
-                "High" -> NotePriority.HIGH
-                "Medium" -> NotePriority.MEDIUM
-                "Low" -> NotePriority.LOW
+                HIGH_PRIORITY -> NotePriority.HIGH
+                MEDIUM_PRIORITY -> NotePriority.MEDIUM
                 else -> NotePriority.LOW
             }
         }

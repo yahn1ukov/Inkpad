@@ -6,6 +6,6 @@ import javax.inject.Inject
 
 class DeleteUseCase @Inject constructor(private val noteRepository: NoteRepository) {
     suspend fun execute(note: NoteEntity) {
-        noteRepository.delete(note)
+        noteRepository.local.delete(note)
     }
 }

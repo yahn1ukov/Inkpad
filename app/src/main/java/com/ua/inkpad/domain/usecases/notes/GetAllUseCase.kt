@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class GetAllUseCase @Inject constructor(private val noteRepository: NoteRepository) {
     fun execute(): LiveData<List<NoteEntity>> {
-        return noteRepository.getAll()
+        return noteRepository.local.getAll()
     }
 }

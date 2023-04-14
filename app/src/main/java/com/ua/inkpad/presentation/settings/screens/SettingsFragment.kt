@@ -1,25 +1,37 @@
 package com.ua.inkpad.presentation.settings.screens
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.view.MenuProvider
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ua.inkpad.Inkpad
 import com.ua.inkpad.R
 import com.ua.inkpad.databinding.FragmentSettingsBinding
 import com.ua.inkpad.presentation.notes.viewmodels.NoteViewModel
+import com.ua.inkpad.presentation.settings.viewmodels.SettingsViewModel
+import com.ua.inkpad.utils.Constants.Companion.DARK_THEME_MODE
+import com.ua.inkpad.utils.Constants.Companion.LIGHT_THEME_MODE
+import com.ua.inkpad.utils.Constants.Companion.MODE_NIGHT_FOLLOW_SYSTEM
+import com.ua.inkpad.utils.Constants.Companion.MODE_NIGHT_NO
+import com.ua.inkpad.utils.Constants.Companion.MODE_NIGHT_YES
+import com.ua.inkpad.utils.Constants.Companion.SYSTEM_THEME_MODE
+import com.ua.inkpad.utils.Constants.Companion.THEME_MODES
 import javax.inject.Inject
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
 
     @Inject
     lateinit var noteViewModel: NoteViewModel
+
+    @Inject
+    lateinit var settingsViewModel: SettingsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,27 +44,46 @@ class SettingsFragment : Fragment() {
     ): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
+        setupThemeSpinner()
+
         binding.databaseBtn.setOnClickListener { confirmDeleteAll() }
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val menuHost = requireActivity()
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.settings_fragment_menu, menu)
-            }
+    private fun setupThemeSpinner() {
+        val adapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_dropdown_item,
+            THEME_MODES
+        )
 
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                if (menuItem.itemId == android.R.id.home) {
-                    requireActivity().onBackPressed()
-                }
-                return true
-            }
+        binding.themesSpinner.apply {
+            setAdapter(adapter)
+            setOnItemClickListener { _, _, position, _ -> setThemeMode(adapter, position) }
+        }
 
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        getThemeMode()
+    }
+
+    private fun setThemeMode(adapter: ArrayAdapter<String>, position: Int) {
+        val selectedThemeMode = adapter.getItem(position)
+        when (selectedThemeMode.toString()) {
+            SYSTEM_THEME_MODE -> settingsViewModel.setThemeMode(SYSTEM_THEME_MODE)
+            LIGHT_THEME_MODE -> settingsViewModel.setThemeMode(LIGHT_THEME_MODE)
+            DARK_THEME_MODE -> settingsViewModel.setThemeMode(DARK_THEME_MODE)
+        }
+        findNavController().navigate(R.id.action_settingsFragment_to_noteListFragment)
+    }
+
+    private fun getThemeMode() {
+        settingsViewModel.getTheme.observe(viewLifecycleOwner) {
+            when (it) {
+                MODE_NIGHT_FOLLOW_SYSTEM -> binding.themesSpinner.setText(SYSTEM_THEME_MODE, false)
+                MODE_NIGHT_NO -> binding.themesSpinner.setText(LIGHT_THEME_MODE, false)
+                MODE_NIGHT_YES -> binding.themesSpinner.setText(DARK_THEME_MODE, false)
+            }
+        }
     }
 
     private fun confirmDeleteAll() {
