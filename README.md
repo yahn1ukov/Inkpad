@@ -18,22 +18,22 @@ Clean Architecture with MVVM Pattern
 - Dagger
 - LiveData
 - DiffUtil
+- DataStore
 
 ### Functionality
 
 - Note:
-  - Get all
-  - Create
-  - Update
-  - Delete (both menu button and swipe to the left)
-  - Delete all
-  - Sort by high priority
-  - Sort by low priority
-  - Search
-  - Share
+    - Get all
+    - Create
+    - Update
+    - Delete (both menu button and swipe to the left)
+    - Delete all
+    - Sort by high priority
+    - Sort by low priority
+    - Search
+    - Share
 - App:
-  - Change the theme (future)
-  - Change the language (future)
+    - Change the theme
 
 ### Screenshots
 

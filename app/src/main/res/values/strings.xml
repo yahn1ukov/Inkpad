@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Inkpad</string>
-    <string name="app_version">Inkpad for Android v1.0.0</string>
 
     <string name="fab_content_description">Create</string>
     <string name="image_content_description">No Data Image</string>
