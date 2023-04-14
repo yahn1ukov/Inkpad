@@ -19,6 +19,7 @@ Clean Architecture with MVVM Pattern
 - LiveData
 - DiffUtil
 - DataStore
+- DataBinding
 
 ### Functionality
 
