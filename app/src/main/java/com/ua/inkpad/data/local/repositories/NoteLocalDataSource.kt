@@ -5,7 +5,9 @@ import com.ua.inkpad.data.local.dao.NoteDao
 import com.ua.inkpad.data.local.models.entities.NoteEntity
 import javax.inject.Inject
 
-class NoteLocalDataSource @Inject constructor(private val noteDao: NoteDao) {
+class NoteLocalDataSource @Inject constructor(
+    private val noteDao: NoteDao
+) {
     fun getAll(): LiveData<List<NoteEntity>> {
         return noteDao.getAll()
     }

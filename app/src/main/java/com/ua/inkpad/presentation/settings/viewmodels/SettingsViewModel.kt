@@ -8,8 +8,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class SettingsViewModel @Inject constructor(private val preferenceManager: PreferenceManager) :
-    ViewModel() {
+class SettingsViewModel @Inject constructor(
+    private val preferenceManager: PreferenceManager
+) : ViewModel() {
     val getTheme = preferenceManager.getThemeMode.asLiveData(Dispatchers.IO)
 
     fun setThemeMode(themeMode: String) {

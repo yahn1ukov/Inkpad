@@ -18,7 +18,9 @@ import kotlinx.coroutines.flow.map
 import java.io.IOException
 import javax.inject.Inject
 
-class PreferenceManager @Inject constructor(context: Context) {
+class PreferenceManager @Inject constructor(
+    context: Context
+) {
     private val dataStore = context.createDataStore(name = DATA_STORE_NAME)
 
     companion object {

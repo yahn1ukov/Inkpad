@@ -5,7 +5,9 @@ import com.ua.inkpad.data.local.models.entities.NoteEntity
 import com.ua.inkpad.data.repositories.NoteRepository
 import javax.inject.Inject
 
-class SortByHighPriorityUseCase @Inject constructor(private val noteRepository: NoteRepository) {
+class SortByHighPriorityUseCase @Inject constructor(
+    private val noteRepository: NoteRepository
+) {
     fun execute(): LiveData<List<NoteEntity>> {
         return noteRepository.local.sortByHighPriority()
     }
