@@ -21,21 +21,6 @@ Clean Architecture with MVVM Pattern
 - DataStore
 - DataBinding
 
-### Functionality
-
-- Note:
-    - Get all
-    - Create
-    - Update
-    - Delete (both menu button and swipe to the left)
-    - Delete all
-    - Sort by high priority
-    - Sort by low priority
-    - Search
-    - Share
-- App:
-    - Change the theme
-
 ### Screenshots
 
 ![app](./screenshots/app.png)
